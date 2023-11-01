@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/output.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="">
+</head>
+<body onload="durats()">
+    <main class="w-full h-screen bg-[#000000d8]" id="main">
+    <div class="container flex h-screen w-full justify-center items-center mx-auto ">
+        <div class="w-2/4 h-[90%] border-red-50 border-4 px-10 rounded-md bg-gradient-to-b from-black to-white" id="divb">
+            <div class="w-full   flex justify-end px-6 py-8 ">
+                <!-- <i class="bi bi-arrow-right-square-fill text-6xl"></i> -->
+                <i class="bi bi-lightbulb-fill text-4xl text-white cursor-pointer" id="light"></i>
+            </div>
+            <div class="w-full flex justify-center ">
+                <figure class="w-48 overflow-hidden h-48 rounded-full bg-black relative after:w-10 after:h-10 after:flex after:absolute after:left-[50%] after:top-[50%] after:translate-x-[-50%] after:translate-y-[-50%] after:bg-white after:z-20 after:rounded-full" id="afters">
+                    <img class="w-full h-full  " src="img/ibo1.jpg" alt="" id="cover">
+                </figure>
+            </div>
+            <div class="w-full text-center  text-2xl uppercase font-medium my-5">
+                <h1 id="trickname" class="py-4" > trick name </h1>
+                <div class="flex justify-between">
+                    <h1 class="text-lg" id="current">00:00</h1>
+                <p id="music-name" class="text-2xl px-9">name ahang</p>
+                <h1 class="text-lg" id="durat">00:00</h1>
+                </div>
+                
+            </div>
+            <div class="w-100 text-center">
+                <audio src="mp3/belalim.mp3"   class=" text-center translate-x-[50%]" id="song">
+                    
+                </audio>
+                <!-- <input type="range" id="range"> -->
+                <!-- <div class="w-[276px] h-4 bg-red-700" id="divwidth"></div> -->
+                
+                <div class="w-100 h-2 bg-black rounded-md relative cursor-pointer flex " id="width">
+                    
+                    <div class="w-4 h-4 rounded-full bg-yellow-100 translate-y-[-25%] pointer-events-none cursor-pointer absolute left-[-2%] top-0" id="leftdiv"></div>
+                    
+                    <!-- <input type="range" min="0" max="100" value="50"> -->
+                </div>
+                <div class="w-full flex text-2xl justify-center mt-6">
+                    <i class="bi bi-skip-backward-fill cursor-pointer text-black  text-6xl" id="backward"></i>
+                    <i class="bi bi-play-circle-fill cursor-pointer text-black mx-4 text-6xl" id="play"></i>
+                    <i class="bi bi-skip-forward-fill cursor-pointer text-black  text-6xl" id="forward"></i>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</main>
+    <script>
+        let light = document.getElementById('light')
+        let song = document.getElementById('song')
+        let play = document.getElementById('play')
+        let leftdiv = document.getElementById('leftdiv')
+        let range = document.getElementById('range')
+        let width = document.getElementById('width')
+        let divwidth = document.getElementById('divwidth')
+        let current = document.getElementById('current')
+        let durat = document.getElementById('durat')
+        let cover = document.getElementById('cover')
+        let forward = document.getElementById('forward')
+        let backward = document.getElementById('backward')
+        let trickname = document.getElementById('trickname')
+        let musicname = document.getElementById('music-name')
+        let divb = document.getElementById('divb')
+        let icons = document.querySelectorAll('.mt-6 i')
+        let main = document.getElementById('main')
+        let afters = document.getElementById('afters')
+        let khanandegan = ['Emrah 1','Emrah 2','Ibrahim Tatlis 1','Ibrahim Tatlis 2']
+        let upen = ['belalim','ben nasil','Haydi soyle' , 'Nankor kedi']
+        let x =['belalim','bennasil','Haydisoyle' , 'Nankorkedi']
+        let mrmusic = ['emrah1','emrah2', 'ibo1','ibo2']
+        let index =0
+        let iop = 1
+        light.addEventListener('click',()=>{
+            if(iop%2){
+                
+                light.classList.remove('text-white')
+                light.classList.add('text-black')
+                divb.classList.remove('from-black')
+                divb.classList.add('from-white')
+                divb.classList.remove('to-white')
+                divb.classList.add('to-black')
+                icons.forEach((val)=>{
+                    val.classList.remove('text-black')
+                    val.classList.add('text-white')
+                })
+                width.classList.remove('bg-black')
+                width.classList.add('bg-white')
+                leftdiv.classList.remove('bg-yellow-100')
+                leftdiv.classList.add('bg-black')
+                main.classList.remove('bg-[#000000d8]')
+                main.classList.add('bg-[#0000004f]')
+                afters.classList.remove('after:bg-white')
+                afters.classList.add('after:bg-[#909090]')
+                divb.classList.remove('border-red-50')
+                divb.classList.add('border-[#909090]')
+               
+
+            }else {
+                light.classList.add('text-white')
+                light.classList.remove('text-black')
+                divb.classList.add('from-black')
+                divb.classList.remove('from-white')
+                divb.classList.add('to-white')
+                divb.classList.remove('to-black')
+                icons.forEach((val)=>{
+                    val.classList.add('text-black')
+                    val.classList.remove('text-white')
+                })
+                width.classList.add('bg-black')
+                width.classList.remove('bg-white')
+                leftdiv.classList.add('bg-yellow-100')
+                leftdiv.classList.remove('bg-black')
+                main.classList.add('bg-[#000000d8]')
+                main.classList.remove('bg-[#0000004f]')
+                afters.classList.add('after:bg-white')
+                afters.classList.remove('after:bg-[#909090]')
+                divb.classList.add('border-red-50')
+                divb.classList.remove('border-[#909090]')
+              
+            }
+            iop++
+        })
+        function imagebar(){
+            cover.src='img/'+mrmusic[index]+'.jpg'
+        }
+        imagebar()
+        function sedaha(){
+            musicname.innerHTML = upen[index]
+            musicname.classList.add('text-2xl')
+        }
+        sedaha()
+        function khanende(){
+            trickname.innerHTML = khanandegan[index]
+        }
+        khanende()
+        function durats(){
+          let  dp = song.duration % 60
+          let  hp = song.duration / 60
+            durat.innerHTML = '0'+parseInt(hp)+':'+parseInt(dp)
+        }
+        
+
+        
+        song.src ='mp3/'+ x[index]+'.mp3'
+        song.addEventListener('ended',()=>{
+            index++ 
+            if(index>x.length-1){
+                index=0
+                song.src = `mp3/`+x[index]+`.mp3`
+                song.play()
+            }else if(index<=x.length-1){
+                song.src = `mp3/`+x[index]+`.mp3`
+                song.play()
+            }
+            setTimeout(()=>{
+                    durats()
+                },100)
+            khanende()
+                sedaha()
+                imagebar()
+        })
+        forward.addEventListener('click',()=>{
+            cover.classList.remove('animate-spin')
+            setTimeout(()=>{
+                cover.classList.add('animate-spin')
+
+            },400)
+            // cover.classList.add('animate-spin')
+            tabehsanieh = setInterval(saniehshomar,100)
+            pops =  setInterval(reza , 10)
+            index++ 
+            if(index>x.length-1){
+                index=0
+                song.src = `mp3/`+x[index]+`.mp3`
+                song.play()
+            }else if(index<=x.length-1){
+                song.src = `mp3/`+x[index]+`.mp3`
+                song.play()
+            }
+            
+            setTimeout(()=>{
+                if(play.classList.contains('bi-pause-circle-fill')){
+                    
+                    play.classList.remove('bi-pause-circle-fill')
+                    play.classList.add('bi-play-circle-fill')
+                }else if(play.classList.contains('bi-play-circle-fill')){
+                    play.classList.add('bi-pause-circle-fill')
+                    play.classList.remove('bi-play-circle-fill')
+                }
+            },100)
+            play.classList.remove('bi-pause-circle-fill')
+                play.classList.add('bi-play-circle-fill')
+                // durat()
+                setTimeout(()=>{
+                    durats()
+                },100)
+            
+           
+                khanende()
+                sedaha()
+                imagebar()
+            
+        })
+        backward.addEventListener('click',()=>{
+            cover.classList.remove('animate-spin')
+            setTimeout(()=>{
+                cover.classList.add('animate-spin')
+
+            },400)
+            index-- 
+            tabehsanieh = setInterval(saniehshomar,100)
+            pops =  setInterval(reza , 10)
+            if(index<0){
+                index=x.length-1
+                song.src = `mp3/`+x[index]+`.mp3`
+                song.play()
+            }
+            else if(index>=0){
+                song.src = `mp3/`+x[index]+`.mp3`
+                song.play()
+            }
+            
+            setTimeout(()=>{
+                if(play.classList.contains('bi-pause-circle-fill')){
+                    
+                    play.classList.remove('bi-pause-circle-fill')
+                    play.classList.add('bi-play-circle-fill')
+                }else if(play.classList.contains('bi-play-circle-fill')){
+                    play.classList.add('bi-pause-circle-fill')
+                    play.classList.remove('bi-play-circle-fill')
+                }
+            },100)
+            play.classList.remove('bi-pause-circle-fill')
+                play.classList.add('bi-play-circle-fill')
+                // durat()
+                setTimeout(()=>{
+                    durats()
+                },100)
+            
+           
+                khanende()
+                sedaha()
+                imagebar()
+            
+        })
+        
+        console.log(song.currentTime);
+        // console.log(range.value);
+        let i =1
+        // song.style.visibility='hidden'
+        width.addEventListener('click',(e)=>{
+            // console.log(e.offsetX);
+            // console.log(e.srcElement.clientWidth);
+            song.currentTime = (e.offsetX / e.srcElement.clientWidth)*song.duration
+            reza();
+            leftdiv.addEventListener('mousemove',()=>{
+                // leftdiv.style.left=e.screenX+'px'
+            })
+        })
+        play.addEventListener('click',(e)=>{
+            // durats()
+            cover.classList.add('animate-spin')
+            song.play()
+            if(i%2){
+                pops =  setInterval(reza , 10)
+                
+
+            }else{
+
+                clearInterval(pops)
+            }
+            i++
+            
+            // console.log(left);
+            // console.log(song.currentTime);
+            // console.log(song.duration);
+           tabehsanieh = setInterval(saniehshomar,100)
+            
+            if(play.classList.contains('bi-play-circle-fill')){
+                play.classList.add('bi-pause-circle-fill')
+                play.classList.remove('bi-play-circle-fill')
+                // clearInterval(x)
+                
+            }else{
+                cover.classList.remove('animate-spin')
+                play.classList.remove('bi-pause-circle-fill')
+                play.classList.add('bi-play-circle-fill')
+                song.pause()
+            }
+        })
+        // console.log(song.src);
+        function saniehshomar(){
+            current.innerHTML = '00:0'+parseInt(song.currentTime)
+                if(song.currentTime>10){
+                    current.innerHTML ='00:'+ parseInt(song.currentTime)
+                }
+                if(song.currentTime>60){
+                    current.innerHTML = '01:'+(parseInt(song.currentTime)-60)
+                    if(song.currentTime>60 && song.currentTime<70){
+                        current.innerHTML = '01:0'+(parseInt(song.currentTime)-60)
+                    }
+                }
+                if(song.currentTime>120){
+                    current.innerHTML = '02:'+(parseInt(song.currentTime)-120)
+                    if(song.currentTime>120 && song.currentTime<130){
+                        current.innerHTML = '02:0'+(parseInt(song.currentTime)-120)
+                    }
+                }
+                if(song.currentTime>180){
+                    current.innerHTML = '03:'+(parseInt(song.currentTime)-180)
+                    if(song.currentTime>180 && song.currentTime<190){
+                        current.innerHTML = '03:0'+(parseInt(song.currentTime)-180)
+                    }
+                }
+                if(song.currentTime>240){
+                    current.innerHTML = '04:'+(parseInt(song.currentTime)-240)
+                    if(song.currentTime>240 && song.currentTime<250){
+                        current.innerHTML = '04:0'+(parseInt(song.currentTime)-240)
+                    }
+                }
+                if(song.currentTime>300){
+                    current.innerHTML = '05:'+(parseInt(song.currentTime)-300)
+                    if(song.currentTime>300 && song.currentTime<310){
+                        current.innerHTML = '05:0'+(parseInt(song.currentTime)-300)
+                    }
+                }
+        }
+        function reza(){
+            let left = (song.currentTime*100)/song.duration
+            leftdiv.style.left = (left-2)+'%'
+            // range.value=song.currentTime
+            // console.log(left);
+        }
+    </script>
+</body>
+</html>
