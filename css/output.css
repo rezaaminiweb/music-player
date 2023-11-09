@@ -10,6 +10,7 @@
 *,
 ::before,
 ::after {
+  transition:.4s;
   box-sizing: border-box;
   /* 1 */
   border-width: 0;
